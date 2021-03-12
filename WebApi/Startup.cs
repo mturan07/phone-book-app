@@ -1,3 +1,7 @@
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApi.Business;
-using WebApi.DataAccess;
-using WebApi.DataAccess.Concrete;
-using WebApi.DataAccess.Concrete.EntityFramework;
-using WebApi.Models;
 
 namespace WebApi
 {
