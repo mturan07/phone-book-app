@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Business;
+using WebApi.DataAccess;
+using WebApi.DataAccess.Concrete;
 using WebApi.Models;
 
 namespace WebApi
@@ -28,7 +30,8 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddSingleton<IContactService, ContactManager>();
+            services.AddSingleton<IContactService, ContactManager>();
+            services.AddSingleton<IContactDal, ContactDal>();
             //services.AddDbContext<WebApiDBContext>(options =>
             //    options.UseNpgsql(Configuration.GetConnectionString("MyWebApiConnection")));
         }

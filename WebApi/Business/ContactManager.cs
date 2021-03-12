@@ -16,9 +16,14 @@ namespace WebApi.Business
             _contactDal = contactDal;
         }
 
-        public List<Contact> GetAll()
+        public void Add(Contact contact)
         {
-            return _contactDal.GetAll();
+            _contactDal.Add(contact);
+        }
+
+        public Task<List<Contact>> GetAll()
+        {
+            return _contactDal.GetAllAsync();
         }
     }
 }

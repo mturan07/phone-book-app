@@ -8,6 +8,8 @@ namespace WebApi.Business
 {
     public interface IContactService
     {
-        List<Contact> GetAll();
+        Task<List<Contact>> GetAll();
+
+        void Add(Contact contact);
     }
 }

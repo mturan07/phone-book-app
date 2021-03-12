@@ -48,11 +48,11 @@ namespace WebApi.DataAccess.Concrete
             }
         }
 
-        public List<Contact> GetAll()
+        public async Task<List<Contact>> GetAllAsync()
         {
             using (WebApiDBContext context = new WebApiDBContext())
             {
-                return context.Set<Contact>().ToList();
+                return await context.Set<Contact>().ToListAsync();
             }
         }
 
