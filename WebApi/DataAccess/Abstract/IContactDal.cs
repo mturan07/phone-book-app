@@ -7,7 +7,7 @@ using WebApi.Models.DTOs;
 
 namespace WebApi.DataAccess
 {
-    public interface IContactDal : IRepositoryEntities<Contact>
+    public interface IContactDal : IEntityRepository<Contact>
     {
         List<ContactDetailDto> GetContactDetails();
     }

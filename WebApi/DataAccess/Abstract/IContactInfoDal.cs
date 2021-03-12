@@ -6,7 +6,7 @@ using WebApi.Models;
 
 namespace WebApi.DataAccess
 {
-    interface IContactInfoDal : IRepositoryEntities<ContactInfo>
+    interface IContactInfoDal : IEntityRepository<ContactInfo>
     {
     }
 }

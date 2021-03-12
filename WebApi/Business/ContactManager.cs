@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WebApi.Business.Constants;
 using WebApi.DataAccess;
 using WebApi.Models;
+using WebApi.Models.DTOs;
 using WebApi.Utilities;
 
 namespace WebApi.Business
@@ -22,13 +23,28 @@ namespace WebApi.Business
         public IResult Add(Contact contact)
         {
             _contactDal.Add(contact);
-
-            return new SuccessResult(Messages.ProductAdded);
+            return new SuccessResult(Messages.ContactAdded);
         }
 
-        public Task<List<Contact>> GetAll()
+        public IResult Delete(Contact contact)
         {
-            return _contactDal.Get();
+            _contactDal.Delete(contact);
+            return new SuccessResult(Messages.ContactDeleted);
+        }
+
+        public IDataResult<Contact> GetById(Guid contactId)
+        {
+            return new SuccessDataResult<Contact>(_contactDal.Get(c => c.ContactId == contactId));
+        }
+
+        public IDataResult<List<Contact>> GetList()
+        {
+            return new SuccessDataResult<List<Contact>>(_contactDal.GetList(), Messages.ContactsListed);
+        }
+
+        public IDataResult<List<ContactDetailDto>> GetContactDetails()
+        {
+            return new SuccessDataResult<List<ContactDetailDto>>(_contactDal.GetContactDetails(), Messages.ContactDetailsListed);
         }
     }
 }

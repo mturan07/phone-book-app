@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Models.Entities;
 
 namespace WebApi.Models
 {
-    public class Contact
+    public class Contact : IEntity
     {
         public Guid ContactId { get; set; }
         public string FirstName { get; set; }

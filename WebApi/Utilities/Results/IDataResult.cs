@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApi.Models;
 
-namespace WebApi.DataAccess
+namespace WebApi.Utilities
 {
-    interface IReportDal : IEntityRepository<Report>
+    public interface IDataResult<T> : IResult
     {
+        T Data { get; }
     }
 }

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using WebApi.Business;
 using WebApi.DataAccess;
 using WebApi.DataAccess.Concrete;
+using WebApi.DataAccess.Concrete.EntityFramework;
 using WebApi.Models;
 
 namespace WebApi
@@ -30,7 +31,7 @@ namespace WebApi
         {
             services.AddControllers();
             services.AddSingleton<IContactService, ContactManager>();
-            services.AddSingleton<IContactDal, ContactDal>();
+            services.AddSingleton<IContactDal, EfContactDal>();
             //services.AddDbContext<WebApiDBContext>(options =>
             //    options.UseNpgsql(Configuration.GetConnectionString("MyWebApiConnection")));
         }
