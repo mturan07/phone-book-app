@@ -10,13 +10,13 @@ namespace WebApi.DataAccess.Concrete
 {
     public class ContactDal : IContactDal
     {       
-        public void Add(Contact entity)
+        public async void Add(Contact entity)
         {
             using (WebApiDBContext context = new WebApiDBContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }        
         
@@ -40,15 +40,15 @@ namespace WebApi.DataAccess.Concrete
             }
         }
 
-        public Contact Get(Guid contactId)
+        public async Task<Contact> GetById(Guid contactId)
         {
             using (WebApiDBContext context = new WebApiDBContext())
             {
-                return context.Set<Contact>().SingleOrDefault(c => c.ContactId == contactId);
+                return await context.Set<Contact>().SingleOrDefaultAsync(c => c.ContactId == contactId);
             }
         }
 
-        public async Task<List<Contact>> GetAllAsync()
+        public async Task<List<Contact>> Get()
         {
             using (WebApiDBContext context = new WebApiDBContext())
             {

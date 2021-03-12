@@ -8,9 +8,9 @@ namespace WebApi.DataAccess
     public interface IRepositoryEntities<T>
         where T: class, new()
     {
-        Task<List<T>> GetAllAsync();
+        Task<List<T>> Get();
         
-        T Get(Guid guidId);
+        Task<T> GetById(Guid guidId);
 
         void Add(T entity);
 

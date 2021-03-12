@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Models;
+using WebApi.Utilities;
 
 namespace WebApi.Business
 {
@@ -10,6 +12,6 @@ namespace WebApi.Business
     {
         Task<List<Contact>> GetAll();
 
-        void Add(Contact contact);
+        IResult Add(Contact contact);
     }
 }

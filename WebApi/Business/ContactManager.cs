@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Business.Constants;
 using WebApi.DataAccess;
 using WebApi.Models;
+using WebApi.Utilities;
 
 namespace WebApi.Business
 {
@@ -16,14 +19,16 @@ namespace WebApi.Business
             _contactDal = contactDal;
         }
 
-        public void Add(Contact contact)
+        public IResult Add(Contact contact)
         {
             _contactDal.Add(contact);
+
+            return new SuccessResult(Messages.ProductAdded);
         }
 
         public Task<List<Contact>> GetAll()
         {
-            return _contactDal.GetAllAsync();
+            return _contactDal.Get();
         }
     }
 }

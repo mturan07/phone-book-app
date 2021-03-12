@@ -27,6 +27,18 @@ namespace WebApi.Controllers
             return _contactService.GetAll();
         }
 
+        //[HttpPost("add")]
+        [HttpPost]
+        public IActionResult Add(Contact contact)
+        {
+            var result = _contactService.Add(contact);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         /*
         // GET: api/Contacts
         [HttpGet]
