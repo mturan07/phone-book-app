@@ -6,6 +6,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -30,9 +31,10 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ContactDeleted);
         }
 
-        public IDataResult<Contact> GetById(Guid contactId)
+        public IDataResult<Task<Contact>> GetById(Guid contactId)
         {
-            return new SuccessDataResult<Contact>(_contactDal.Get(c => c.ContactId == contactId));
+            return new SuccessDataResult<Task<Contact>>(
+                _contactDal.Get(c => c.ContactId == contactId));
         }
 
         public IDataResult<List<Contact>> GetList()

@@ -12,7 +12,7 @@ namespace Core.DataAccess
     {
         List<T> GetList(Expression<Func<T, bool>> filter = null);
         
-        T Get(Expression<Func<T, bool>> filter);
+        Task<T> Get(Expression<Func<T, bool>> filter);
 
         void Add(T entity);
 

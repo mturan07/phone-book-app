@@ -9,7 +9,7 @@ namespace Business.Abstract
 {
     public interface IContactInfoService
     {
-        IDataResult<ContactInfo> GetById(Guid contactId);
+        IDataResult<Task<ContactInfo>> GetById(Guid contactId);
 
         IDataResult<List<ContactInfo>> GetList();
 

@@ -5,6 +5,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -29,9 +30,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ContactDeleted);
         }
 
-        public IDataResult<ContactInfo> GetById(Guid contactId)
+        public IDataResult<Task<ContactInfo>> GetById(Guid contactId)
         {
-            return new SuccessDataResult<ContactInfo>(_contactInfoDal.Get(c => c.ContactId == contactId));
+            return new SuccessDataResult<Task<ContactInfo>>(_contactInfoDal.Get(c => c.ContactId == contactId));
         }
 
         public IDataResult<List<ContactInfo>> GetList()

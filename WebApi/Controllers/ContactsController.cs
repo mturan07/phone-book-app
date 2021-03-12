@@ -34,7 +34,6 @@ namespace WebApi.Controllers
             if (result.Success)
             {                
                 return Ok(result);
-                //return Ok(result.Data.Where(c => c.ContactId == id));
             }
             return BadRequest(result);
         }
