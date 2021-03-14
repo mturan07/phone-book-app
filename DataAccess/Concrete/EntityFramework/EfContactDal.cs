@@ -11,13 +11,18 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfContactDal : EfEntityRepositoryBase<Contact, WebApiDBContext>, IContactDal
     {
+
+        /**
+         * 
+         * Join ile birleştirilen iki tablodan belirli alanları ContactDetailDto üzerinden ayıklıyoruz
+         * 
+         */
         public List<ContactDetailDto> GetContactDetails()
         {
             using (WebApiDBContext context = new WebApiDBContext())
             {
                 var result = from c in context.Contacts
-                             join i in context.ContactInfos
-                             on c.ContactId equals i.ContactId
+                             join i in context.ContactInfos on c.ContactId equals i.ContactId
                              select new ContactDetailDto
                              {
                                  ContactId = c.ContactId,
@@ -27,6 +32,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  InfoType = i.InfoType,
                                  Description = i.Description
                              };
+
                 return result.ToList();
             }
         }

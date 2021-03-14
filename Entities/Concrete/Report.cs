@@ -11,5 +11,7 @@ namespace Entities.Concrete
         public Guid ReportId { get; set; }
         public DateTime RequestDate { get; set; }
         public string State { get; set; }
+
+        public ICollection<ReportDetail> ReportDetail { get; set; }
     }
 }

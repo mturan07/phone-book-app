@@ -29,9 +29,11 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<IContactInfoService, ContactInfoManager>();
             services.AddSingleton<IContactService, ContactManager>();
             services.AddSingleton<IContactDal, EfContactDal>();
             services.AddSingleton<IContactInfoDal, EfContactInfoDal>();
+
             //services.AddDbContext<WebApiDBContext>(options =>
             //    options.UseNpgsql(Configuration.GetConnectionString("MyWebApiConnection")));
         }

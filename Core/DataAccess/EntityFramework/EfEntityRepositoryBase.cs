@@ -32,15 +32,15 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        public async Task<TEntity> Get(Expression<Func<TEntity, bool>> filter)
+        public TEntity GetById(Expression<Func<TEntity, bool>> filter)
         {
             using (var context = new TContext())
             {
-                return await context.Set<TEntity>().SingleOrDefaultAsync(filter);
+                return context.Set<TEntity>().SingleOrDefault(filter);
             }
         }
 
-        public List<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context = new TContext())
             {

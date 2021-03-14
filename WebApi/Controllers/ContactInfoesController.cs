@@ -23,7 +23,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _contactInfoService.GetList();
+            var result = _contactInfoService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -31,8 +31,20 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(Guid id)
+        {
+            var result = _contactInfoService.GetAll();
+            if (result.Success)
+            {
+                IEnumerable<ContactInfo> contactInfos = result.Data.Where(c => c.ContactId == id);
+                return Ok(contactInfos);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost]
-        public IActionResult Add(ContactInfo contactInfo)
+        public IActionResult Add([FromBody] ContactInfo contactInfo)
         {
             var result = _contactInfoService.Add(contactInfo);
             if (result.Success)
@@ -40,6 +52,30 @@ namespace WebApi.Controllers
                 return Ok(result);
             }
             return BadRequest(result);
+        }
+
+        //[HttpPost("update")]
+        //public IActionResult Update([FromBody] ContactInfo contactInfo)
+        //{
+        //    var result = _contactInfoService.Update(contactInfo);
+        //    if (result.Success)
+        //    {
+        //        return Ok(result.Message);
+        //    }
+
+        //    return BadRequest(result.Message);
+        //}
+
+        [HttpDelete]
+        public IActionResult Delete([FromBody] ContactInfo contactInfo)
+        {
+            var result = _contactInfoService.Delete(contactInfo);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+
+            return BadRequest(result.Message);
         }
     }
 }

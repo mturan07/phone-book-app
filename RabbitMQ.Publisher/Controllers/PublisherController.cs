@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RabbitMQ.Publisher.Controllers
@@ -12,21 +13,36 @@ namespace RabbitMQ.Publisher.Controllers
     [ApiController]
     public class PublisherController : ControllerBase
     {
-        private static readonly string _queueName = "ReportQueue";
+        string _queueName = "ReportQueue";
 
         IEventBus eventBus = new EventBus(new RabbitMQService());
 
         [HttpGet]
         public string Get()
         {
-            eventBus.Publisher(_queueName, "Hello RabbitMQ World!");
-            return "Gönderilen mesaj : Hello RabbitMQ World!";
+            return "Publisher";
+            //eventBus.Publisher(_queueName, "Hello RabbitMQ World!");
+            //return "Gönderilen mesaj : Hello RabbitMQ World!";
+        }
+
+        [HttpGet("RaporOlustur")]
+        public void GetRapor()
+        {
+            eventBus.Publisher(_queueName, "Rapor oluşturma isteği alındı.");
         }
 
         [HttpPost]
         public void Post([FromBody] string mesaj)
         {
-            eventBus.Publisher(_queueName, mesaj);
+            eventBus.Publisher(_queueName, mesaj + "_01");
+            //Thread.Sleep(200);
+            //eventBus.Publisher(_queueName, mesaj + "_02");
+            //Thread.Sleep(200);
+            //eventBus.Publisher(_queueName, mesaj + "_03");
+            //Thread.Sleep(200);
+            //eventBus.Publisher(_queueName, mesaj + "_04");
+            //Thread.Sleep(200);
+            //eventBus.Publisher(_queueName, mesaj + "_05");
         }
     }
 }

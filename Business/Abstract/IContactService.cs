@@ -9,9 +9,9 @@ namespace Business.Abstract
 {
     public interface IContactService
     {
-        IDataResult<Task<Contact>> GetById(Guid contactId);
+        IDataResult<Contact> GetById(Guid contactId);
 
-        IDataResult<List<Contact>> GetList();
+        IDataResult<List<Contact>> GetAll();
 
         IResult Add(Contact contact);
 

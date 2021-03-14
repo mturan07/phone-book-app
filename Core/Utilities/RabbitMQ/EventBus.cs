@@ -19,11 +19,23 @@ namespace Core.Utilities.RabbitMQ
 
         public string Consumer(string queueName)
         {
-            string Message = "";
+            //List<string> messages = new List<string>();
+            string message = "";
+
             using (var connection = _rabbitMQService.GetRabbitMQConnection())
             {
                 using (var channel = connection.CreateModel())
                 {
+
+                    channel.BasicQos(0, 1, false);
+
+                    MessageReceiver messageReceiver = new MessageReceiver(channel);
+
+                    message = messageReceiver.getReceivedMessage();
+
+                    channel.BasicConsume("demoqueue", true, messageReceiver);
+
+                    /*
                     var consumer = new EventingBasicConsumer(channel);
 
                     // Received event'i sürekli listen modunda olacaktır.
@@ -32,16 +44,18 @@ namespace Core.Utilities.RabbitMQ
                         var body = ea.Body.ToArray();
                         var message = Encoding.UTF8.GetString(body);
 
-                        //Console.WriteLine("{0} isimli queue üzerinden gelen mesaj: \"{1}\"", queueName, message);
+                        //Console.WriteLine("{0} isimli queue üzerinden gelen mesaj: \"{1}\"", queueName, message);                        
 
-                        Message = message;
+                        messages.Add(message);
                     };
 
                     channel.BasicConsume(queueName, true, consumer);
                     //Console.ReadLine();
+                    */
                 }
             }
-            return Message;
+
+            return message;
         }
 
         public void Publisher(string queueName, string message)

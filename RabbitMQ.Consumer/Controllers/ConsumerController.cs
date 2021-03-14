@@ -19,7 +19,18 @@ namespace RabbitMQ.Consumer.Controllers
         [HttpGet]
         public string Get()
         {
-            return "Gelen mesaj : " + eventBus.Consumer(_queueName);
+            List<string> messages = new List<string>();
+            messages = eventBus.Consumer(_queueName);
+            
+            string str = "";
+
+            foreach (string item in messages)
+            {
+                str += item;
+            }
+
+            return "Consumer" + "\n" +
+                "Mesajlar : " + str;
         }
     }
 }

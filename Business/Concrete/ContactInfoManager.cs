@@ -30,14 +30,15 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ContactDeleted);
         }
 
-        public IDataResult<Task<ContactInfo>> GetById(Guid contactId)
+        public IDataResult<ContactInfo> GetById(Guid contactId)
         {
-            return new SuccessDataResult<Task<ContactInfo>>(_contactInfoDal.Get(c => c.ContactId == contactId));
+            return new SuccessDataResult<ContactInfo>(_contactInfoDal.GetById(c => c.ContactId == contactId));
         }
 
-        public IDataResult<List<ContactInfo>> GetList()
+        public IDataResult<List<ContactInfo>> GetAll()
         {
-            return new SuccessDataResult<List<ContactInfo>>(_contactInfoDal.GetList(), Messages.ContactsListed);
+            return new SuccessDataResult<
+                List<ContactInfo>>(_contactInfoDal.GetAll(), Messages.ContactsListed);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    interface IReportDal : IEntityRepository<Report>
+    public interface IReportDal : IEntityRepository<Report>
     {
     }
 }
