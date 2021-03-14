@@ -36,6 +36,7 @@ ile PostgreSQL üzerinde PhoneBookDB veritabanı oluşturulmaktadır.
 Rest servisler için Postman aracıyla istekler oluşturulmaktadır.
 
   I) WebAPI:
+     Kişi ve kişi detayı CRUD işlemleri
 
     Kişi ekleme:    
     POST http://localhost:54434/api/Contacts
@@ -61,6 +62,7 @@ Rest servisler için Postman aracıyla istekler oluşturulmaktadır.
     Kişiye ait iletişim bilgisi silme:
     DELETE http://localhost:54434/api/ContactInfoes
 
-  II) ReportAPI:
+  II) ReportAPI: 
+      Rapor oluşturma, listeleme ve detay getirme
   
     Eklenecek
