@@ -1,7 +1,4 @@
 # phone-book-app
-Phone Book App
-
-# phone-book-app
 Phone Book App Backend Projesi
 ==============================
 
