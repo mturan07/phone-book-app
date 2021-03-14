@@ -4,6 +4,7 @@ Phone Book App Backend Projesi
 
 Kurumsal mimari yapısında (Business, DataAccess, Entities, Core) katmanlarını içerecek şekilde tasarlanmaya gayret edildi.
 Bilgisayarınızda PostgreSQL, RabbitMQ ve Postman kurulu olmalıdır.
+Migration işleminden sonra Contact ve ContactInfo tablolarına örnek (dummy) data eklenmektedir. Bu data ile servis kolayca test edilebilir.
 
   PostgreSQL için link:
   https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
@@ -42,11 +43,24 @@ Rest servisler için Postman aracıyla istekler oluşturulmaktadır.
     Kişileri listeleme:
     GET http://localhost:54434/api/Contacts
     
-    Kişilere ait iletişim bilgilerini detaylı getirme:
+    Kişileri iletişim bilgileri ile birlikte detaylı listeleme:
     GET http://localhost:54434/api/Contacts/Details
     
-    ![image](https://user-images.githubusercontent.com/46825409/111084618-4b164680-8524-11eb-9721-ce32edf2e261.png)
+    Kişiyi ve kişiye ait iletişim bilgileri detayını getirme:
+    GET http://localhost:54434/api/Contacts/Details/{contactId}
+    
+    Kişi silme:
+    DELETE http://localhost:54434/api/Contacts
+    
+    Kişiye ait iletişim bilgileri listeleme:
+    GET http://localhost:54434/api/ContactInfoes
+    
+    Kişiye ait iletişim bilgisi ekleme:
+    POST http://localhost:54434/api/ContactInfoes
+    
+    Kişiye ait iletişim bilgisi silme:
+    DELETE http://localhost:54434/api/ContactInfoes
 
   II) ReportAPI:
   
-    
+    Eklenecek
