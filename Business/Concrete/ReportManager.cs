@@ -42,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<List<ReportDetail>> GetReportDetail()
         {
-            return new SuccessDataResult<List<ReportDetail>>(_reportDal.(), Messages.ReportDetailsListed);
+            return null; //new SuccessDataResult<List<ReportDetail>>(_reportDal.(), Messages.ReportDetailsListed);
         }
     }
 }
