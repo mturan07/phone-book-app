@@ -1,4 +1,4 @@
-# phone-book-app
+# ntier-app-rabbitmq-postgresql
 Phone Book App Backend Projesi
 ==============================
 
