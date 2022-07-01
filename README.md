@@ -1,5 +1,5 @@
 # ntier-app-rabbitmq-postgresql
-Phone Book App Backend Projesi
+Phone Book App Backend Projesi (N-Tier, RabbitMQ, PostgreSQL)
 ==============================
 
 Kurumsal mimari yapısında (Business, DataAccess, Entities, Core) katmanlarını içerecek şekilde tasarlanmaya gayret edildi.
